@@ -8,6 +8,7 @@
 const int buttonPin = 13;
 const gpio_num_t buttonPinGpio = GPIO_NUM_13;
 const int mosfetPin = 32;
+const int deepSleepTime = 5000;
 
 unsigned long lastButtonPressMillis = 0;
 void checkSleepLcd(bool buttonState);
@@ -32,14 +33,14 @@ void loop()
 
 void checkSleepLcd(bool buttonState)
 {
-    if (millis() - lastButtonPressMillis > 5000)
+    if (millis() - lastButtonPressMillis > deepSleepTime)
     {
         clearAndDisplayLcd();
-        esp_sleep_enable_ext0_wakeup(buttonPinGpio, 0);
+        esp_sleep_enable_ext0_wakeup(buttonPinGpio, LOW); // wake up ESP when button is pressed
         esp_deep_sleep_start();
     }
     else
     {
-        printTextToLcd(buttonState ? "OFF" : "FIRING!");
+        printTextToLcd(buttonState ? "OFF" : "FIRING!", 2);
     }
 }

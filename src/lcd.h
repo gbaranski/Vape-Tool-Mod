@@ -39,7 +39,6 @@ void clearLcd()
 {
     display.setTextColor(WHITE);
     display.setCursor(0, 0);
-    display.setTextSize(1);
     display.clearDisplay();
 }
 
@@ -49,9 +48,11 @@ void clearAndDisplayLcd()
     display.display();
 }
 
-void printTextToLcd(String text)
+void printTextToLcd(String text, int fontSize)
 {
     clearLcd();
+    display.setTextSize(fontSize);
+
     display.println(text);
     display.display();
 }
