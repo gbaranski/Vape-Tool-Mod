@@ -1,12 +1,3 @@
-/*
- LEDC Software Fade
- This example shows how to software fade LED
- using the ledcWrite function.
- Code adapted from original Arduino Fade example:
- https://www.arduino.cc/en/Tutorial/Fade
- This example code is in the public domain.
- */
-
 #include <Arduino.h>
 
 const int buttonPin = 13;
