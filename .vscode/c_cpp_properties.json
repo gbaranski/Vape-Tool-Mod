@@ -9,6 +9,10 @@
             "includePath": [
                 "/Users/gbaranski/code/IoT/vape-mod/include",
                 "/Users/gbaranski/code/IoT/vape-mod/src",
+                "/Users/gbaranski/.platformio/lib/ESP Async WebServer_ID306/src",
+                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
+                "/Users/gbaranski/.platformio/lib/AsyncTCP_ID1826/src",
                 "/Users/gbaranski/.platformio/lib/Adafruit SSD1306_ID135",
                 "/Users/gbaranski/.platformio/lib/Adafruit GFX Library_ID13",
                 "/Users/gbaranski/.platformio/lib/Adafruit BusIO_ID6214",
@@ -87,7 +91,6 @@
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FFat/src",
-                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/HTTPUpdate/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/NetBIOS/src",
@@ -99,7 +102,6 @@
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/Users/gbaranski/.platformio/packages/tool-unity",
                 ""
@@ -109,6 +111,10 @@
                 "path": [
                     "/Users/gbaranski/code/IoT/vape-mod/include",
                     "/Users/gbaranski/code/IoT/vape-mod/src",
+                    "/Users/gbaranski/.platformio/lib/ESP Async WebServer_ID306/src",
+                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
+                    "/Users/gbaranski/.platformio/lib/AsyncTCP_ID1826/src",
                     "/Users/gbaranski/.platformio/lib/Adafruit SSD1306_ID135",
                     "/Users/gbaranski/.platformio/lib/Adafruit GFX Library_ID13",
                     "/Users/gbaranski/.platformio/lib/Adafruit BusIO_ID6214",
@@ -187,7 +193,6 @@
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ESPmDNS/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FFat/src",
-                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/HTTPClient/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/HTTPUpdate/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/NetBIOS/src",
@@ -199,7 +204,6 @@
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/Users/gbaranski/.platformio/packages/tool-unity",
                     ""
