@@ -1,19 +1,27 @@
+#ifndef ARDUINO_H
+#define ARDUINO_H
 #include <Arduino.h>
+#endif
 
 #ifndef LCD_H
 #define LCD_H
 #include "lcd.h"
 #endif
 
+#ifndef CONFIG_H
+#define CONFIG_H
+#include "config.h"
+#endif
+
+#ifndef OUTPUT_H
+#define OUTPUT_H
+#include "output.h"
+#endif
+
 #ifndef WIFISERVER_H
 #define WIIFSERVER_H
 #include "wifiserver.h"
 #endif
-
-const int buttonPin = 13;
-const gpio_num_t buttonPinGpio = GPIO_NUM_13;
-const int mosfetPin = 32;
-const int deepSleepTime = 5000;
 
 unsigned long lastButtonPressMillis = 0;
 bool checkSleepLcd();
@@ -23,7 +31,6 @@ void setup()
 {
     Serial.begin(9600);
     Serial.println("hello");
-    pinMode(mosfetPin, OUTPUT);
     pinMode(buttonPin, INPUT_PULLUP);
     setupLcd();
     setupWifiAndServer();
@@ -34,7 +41,7 @@ void loop()
     bool buttonState = digitalRead(buttonPin);
     if (!checkSleepLcd())
     {
-        printTextToLcd(buttonState ? "OFF" : "FIRING!", 2);
+        printTextToLcd(buttonState ? "OFF " + String(getPwm()) : "FIRING!", 2);
     }
     else
     {
@@ -44,8 +51,13 @@ void loop()
     if (!buttonState)
     {
         lastButtonPressMillis = millis();
+        setMosfetHigh();
     }
-    digitalWrite(mosfetPin, !buttonState);
+    else
+    {
+
+        setMosfetLow();
+    }
 }
 
 bool checkSleepLcd()

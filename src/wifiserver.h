@@ -1,4 +1,15 @@
+#ifndef ARDUINO_H
+#define ARDUINO_H
 #include <Arduino.h>
+#endif
+
+#ifndef OUTPUT_H
+#define OUTPUT_H
+#include "output.h"
+#endif
+
+#include <ArduinoJson.h>
+
 #include <WiFi.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
@@ -29,25 +40,31 @@ void setupWifiAndServer()
     Serial.println(WiFi.localIP());
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", "Hello, world");
+        request->send(200, "text/plain", String(getPwm()));
     });
 
     server.on("/getData", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(200, "text/plain", "Hello at /getData");
+        StaticJsonDocument<200> data;
+        String serializedData;
+        data["pwmValue"] = getPwm();
+        serializeJsonPretty(data, serializedData);
+
+        request->send(200, "application/json", serializedData);
     });
 
-    // Send a POST request to <IP>/post with a form field message set to <message>
-    server.on("/setData", HTTP_POST, [](AsyncWebServerRequest *request) {
-        String message;
-        if (request->hasParam(PARAM_MESSAGE, true))
+    server.on("/setPWM", HTTP_GET, [](AsyncWebServerRequest *request) {
+        String newPWM;
+        if (request->hasParam("pwm"))
         {
-            message = request->getParam(PARAM_MESSAGE, true)->value();
+
+            newPWM = request->getParam("pwm")->value();
+            setPwm(uint32_t(newPWM.toInt()));
+            request->send(200, "text/plain", "SET TO");
         }
         else
         {
-            message = "No message sent";
+            request->send(400, "text/plain", "NO PWM PARAM");
         }
-        request->send(200, "text/plain", "Hello, POST: " + message);
     });
 
     server.onNotFound(handleNotFound);
