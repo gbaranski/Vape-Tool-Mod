@@ -41,7 +41,12 @@ void loop()
     bool buttonState = digitalRead(buttonPin);
     if (!checkSleepLcd())
     {
-        printTextToLcd(buttonState ? "OFF " + String(getPwm()) : "FIRING!", 2);
+        String screenData;
+        screenData += "\n";
+        screenData += buttonState ? "OFF" : "ON!";
+        screenData += "\n";
+        screenData += String(getPwm());
+        printTextToLcd(screenData, 1);
     }
     else
     {

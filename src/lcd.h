@@ -7,6 +7,7 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Fonts/FreeMono9pt7b.h>
 
 #ifndef SCREEN_WIDTH
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -35,6 +36,8 @@ void setupLcd()
     {
         Serial.println("SSD1306 allocation failed");
     }
+    display.setRotation(1);
+    display.setFont(&FreeMono9pt7b);
     clearLcd();
 }
 
