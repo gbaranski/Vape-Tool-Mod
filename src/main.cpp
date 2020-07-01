@@ -13,14 +13,9 @@
 #include "config.h"
 #endif
 
-#ifndef OUTPUT_H
-#define OUTPUT_H
-#include "output.h"
-#endif
-
 #ifndef IO_H
 #define IO_H
-#include "io.h"
+#include "IO.h"
 #endif
 
 #ifndef WIFISERVER_H
@@ -72,7 +67,7 @@ void loop()
     }
     else
     {
-        // goSleep();
+        goSleep();
     }
 
     if (!buttonState)

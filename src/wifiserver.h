@@ -3,9 +3,9 @@
 #include <Arduino.h>
 #endif
 
-#ifndef OUTPUT_H
-#define OUTPUT_H
-#include "output.h"
+#ifndef IO_H
+#define IO_H
+#include "IO.h"
 #endif
 
 #include <ArduinoJson.h>
