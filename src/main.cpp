@@ -18,12 +18,21 @@
 #include "output.h"
 #endif
 
+#ifndef IO_H
+#define IO_H
+#include "io.h"
+#endif
+
 #ifndef WIFISERVER_H
 #define WIIFSERVER_H
 #include "wifiserver.h"
 #endif
 
+#define batteryCheckInterval 60000 // check battery voltage every minute
+
 unsigned long lastButtonPressMillis = 0;
+unsigned long lastBatteryVoltageCheck = 0;
+double batteryVoltage = 0;
 bool checkSleepLcd();
 void goSleep();
 
@@ -34,18 +43,31 @@ void setup()
     pinMode(buttonPin, INPUT_PULLUP);
     setupLcd();
     setupWifiAndServer();
+    batteryVoltage = getBatteryVoltage();
 }
 
 void loop()
 {
     bool buttonState = digitalRead(buttonPin);
+    if (millis() - lastBatteryVoltageCheck > batteryCheckInterval)
+    {
+        Serial.println("Retreiving battery voltage");
+        batteryVoltage = getBatteryVoltage();
+        lastBatteryVoltageCheck = millis();
+    }
+
     if (!checkSleepLcd())
     {
+
         String screenData;
         screenData += "\n";
         screenData += buttonState ? "OFF" : "ON!";
         screenData += "\n";
         screenData += String(getPwm());
+        screenData += "\n";
+        screenData += formatBatteryVoltage(batteryVoltage);
+        screenData += "\n";
+
         printTextToLcd(screenData, 1);
     }
     else
