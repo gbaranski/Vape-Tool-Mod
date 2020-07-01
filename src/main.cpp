@@ -37,7 +37,8 @@ void setup()
     Serial.println("hello");
     pinMode(buttonPin, INPUT_PULLUP);
     setupLcd();
-    setupWifiAndServer();
+    setupIO();
+    // setupWifiAndServer();
     batteryVoltage = getBatteryVoltage();
 }
 

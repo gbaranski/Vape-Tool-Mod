@@ -27,8 +27,10 @@ String formatBatteryVoltage(double batteryVoltage)
 
 uint32_t pwmStrength = 255;
 
-void setupOutput()
+
+void setupIO()
 {
+    pinMode(mosfetPin, OUTPUT);
 }
 
 void setMosfetHigh()
