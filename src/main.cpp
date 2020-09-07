@@ -1,96 +1,32 @@
-#ifndef ARDUINO_H
-#define ARDUINO_H
 #include <Arduino.h>
-#endif
 
-#ifndef LCD_H
-#define LCD_H
-#include "lcd.h"
-#endif
+#include "heltec.h"
 
-#ifndef CONFIG_H
-#define CONFIG_H
-#include "config.h"
-#endif
+void setup() {
+  Heltec.begin(true /*DisplayEnable Enable*/, false /*LoRa Disable*/,
+               true /*Serial Enable*/);
+  Heltec.display->flipScreenVertically();
+  Heltec.display->setFont(ArialMT_Plain_10);
 
-#ifndef IO_H
-#define IO_H
-#include "IO.h"
-#endif
-
-#ifndef WIFISERVER_H
-#define WIIFSERVER_H
-#include "wifiserver.h"
-#endif
-
-#define batteryCheckInterval 60000 // check battery voltage every minute
-
-unsigned long lastButtonPressMillis = 0;
-unsigned long lastBatteryVoltageCheck = 0;
-double batteryVoltage = 0;
-bool checkSleepLcd();
-void goSleep();
-
-void setup()
-{
-    Serial.begin(9600);
-    Serial.println("hello");
-    pinMode(buttonPin, INPUT_PULLUP);
-    setupLcd();
-    setupIO();
-    // setupWifiAndServer();
-    batteryVoltage = getBatteryVoltage();
+  pinMode(27, OUTPUT);
+  pinMode(LED, OUTPUT);
+  pinMode(13, INPUT_PULLUP);
+  adcAttachPin(34);
+  analogSetClockDiv(255);
 }
 
-void loop()
-{
-    bool buttonState = digitalRead(buttonPin);
-    if (millis() - lastBatteryVoltageCheck > batteryCheckInterval)
-    {
-        Serial.println("Retreiving battery voltage");
-        batteryVoltage = getBatteryVoltage();
-        lastBatteryVoltageCheck = millis();
-    }
-
-    if (!checkSleepLcd())
-    {
-
-        String screenData;
-        screenData += "\n";
-        screenData += buttonState ? "OFF" : "ON!";
-        screenData += "\n";
-        screenData += String(getPwm());
-        screenData += "\n";
-        screenData += formatBatteryVoltage(batteryVoltage);
-        screenData += "\n";
-
-        printTextToLcd(screenData, 1);
-    }
-    else
-    {
-        goSleep();
-    }
-
-    if (!buttonState)
-    {
-        lastButtonPressMillis = millis();
-        setMosfetHigh();
-    }
-    else
-    {
-
-        setMosfetLow();
-    }
+double analogReadToVolts(int readValue) {
+  double volts;
+  volts = readValue * 1.7 / 1000;
+  return volts;
 }
 
-bool checkSleepLcd()
-{
-    return millis() - lastButtonPressMillis > deepSleepTime;
-}
-
-void goSleep()
-{
-    clearAndDisplayLcd();
-    esp_sleep_enable_ext0_wakeup(buttonPinGpio, LOW); // wake up ESP when button is pressed
-    esp_deep_sleep_start();
+void loop() {
+  bool buttonState = digitalRead(13);
+  digitalWrite(27, !buttonState);
+  digitalWrite(LED, !buttonState);
+  Heltec.display->clear();
+  Heltec.display->drawString(0, 10,
+                             String(analogReadToVolts(analogRead(34))) + "V");
+  Heltec.display->display();
 }
