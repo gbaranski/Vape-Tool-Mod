@@ -51,7 +51,7 @@ String getDutyPercentString() {
 
 unsigned long lastProgButtonPress = 0;
 
-void loopGpio() {
+void gpioLoop() {
   bool buttonState = digitalRead(BUTTON_PIN);
   bool progButtonState = digitalRead(0);
   changeMosfetState(!buttonState);
