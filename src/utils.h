@@ -9,14 +9,18 @@
 #include "gpio.h"
 
 double analogReadToVolts(int readValue) {
-  double volts;
-  volts = readValue * ADC_CONV_FACTOR / 1000;
-  return volts;
+  double volts = readValue * ADC_CONV_FACTOR / 1000;
+  return floor(volts * 10) / 10;
 }
 
+double getRealVoltage(double voltage) { return voltage * getDutyPercent(); }
+
 double getWatts(double resistance, double voltage) {
-  int newVoltage = voltage * getDutyPercent();
-  return newVoltage * newVoltage / resistance;
+  return voltage * voltage / resistance;
+}
+
+double getAmps(double resistance, double voltage) {
+  return voltage / resistance;
 }
 
 #endif
