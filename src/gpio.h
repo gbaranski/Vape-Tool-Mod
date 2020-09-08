@@ -44,8 +44,9 @@ int getDuty() {
   return ceil(duty);
 }
 
-String getDutyString() {
-  return String(int((double(getDuty()) / 255) * 100)) + "%";
+double getDutyPercent() { return double(getDuty()) / 255; }
+String getDutyPercentString() {
+  return String(int(getDutyPercent() * 100)) + "%";
 }
 
 unsigned long lastProgButtonPress = 0;
