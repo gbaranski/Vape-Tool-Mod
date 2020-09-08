@@ -22,6 +22,6 @@ void loop() {
   Heltec.display->drawString(0, 16, String(RESISTANCE) + "OHM");
   Heltec.display->drawString(0, 32,
                              String(getWatts(RESISTANCE, voltage)) + "W");
-  Heltec.display->drawString(0, 48, getDutyString());
+  Heltec.display->drawString(0, 48, getDutyPercentString());
   Heltec.display->display();
 }

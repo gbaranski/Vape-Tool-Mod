@@ -6,6 +6,7 @@
 #pragma once
 
 #include "config.h"
+#include "gpio.h"
 
 double analogReadToVolts(int readValue) {
   double volts;
@@ -14,7 +15,8 @@ double analogReadToVolts(int readValue) {
 }
 
 double getWatts(double resistance, double voltage) {
-  return voltage * voltage / resistance;
+  int newVoltage = voltage * getDutyPercent();
+  return newVoltage * newVoltage / resistance;
 }
 
 #endif
