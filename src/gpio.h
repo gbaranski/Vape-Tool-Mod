@@ -7,9 +7,12 @@
 
 #include "config.h"
 
-int dutyCounter = 0;
+RTC_DATA_ATTR int dutyCounter = 0;
 
 int getDuty();
+
+unsigned long lastProgButtonPress = 0;
+unsigned long lastMosfetButtonPress = 0;
 
 void setupGpio() {
   // PROG BUTTON
@@ -27,8 +30,13 @@ void setupGpio() {
 }
 
 void changeMosfetState(bool state) {
-  ledcWrite(OUTPUT_CHANNEL, state ? getDuty() : 0);
   digitalWrite(LED, state);
+  if (state) {
+    ledcWrite(OUTPUT_CHANNEL, getDuty());
+    lastMosfetButtonPress = millis();
+  } else {
+    ledcWrite(OUTPUT_CHANNEL, 0);
+  }
 }
 
 void switchDuty() {
@@ -49,17 +57,17 @@ String getDutyPercentString() {
   return String(int(getDutyPercent() * 100)) + "%";
 }
 
-unsigned long lastProgButtonPress = 0;
-
 void gpioLoop() {
   bool buttonState = digitalRead(BUTTON_PIN);
   bool progButtonState = digitalRead(0);
   changeMosfetState(!buttonState);
 
+  unsigned long now = millis();
+
   if (!progButtonState) {
-    if (millis() - lastProgButtonPress >= 500) {
+    if (now - lastProgButtonPress >= 500) {
       switchDuty();
-      lastProgButtonPress = millis();
+      lastProgButtonPress = now;
     }
   }
 }

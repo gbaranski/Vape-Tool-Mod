@@ -2,6 +2,7 @@
 
 #include "config.h"
 #include "display.h"
+#include "gpio.h"
 
 void setup() {
   setupDisplay();
