@@ -9,6 +9,9 @@
             "includePath": [
                 "/Users/gbaranski/code/IoT/vape-mod/include",
                 "/Users/gbaranski/code/IoT/vape-mod/src",
+                "/Users/gbaranski/code/IoT/vape-mod/.pio/libdeps/lolin32/Heltec_ESP32/src",
+                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -67,6 +70,7 @@
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/variants/heltec_wifi_kit_32",
+                "/Users/gbaranski/code/IoT/vape-mod/.pio/libdeps/lolin32/ESP32 AnalogWrite/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -84,7 +88,6 @@
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Preferences/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
@@ -92,7 +95,6 @@
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
-                "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "/Users/gbaranski/.platformio/packages/tool-unity",
                 ""
             ],
@@ -101,6 +103,9 @@
                 "path": [
                     "/Users/gbaranski/code/IoT/vape-mod/include",
                     "/Users/gbaranski/code/IoT/vape-mod/src",
+                    "/Users/gbaranski/code/IoT/vape-mod/.pio/libdeps/lolin32/Heltec_ESP32/src",
+                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
+                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -159,6 +164,7 @@
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/variants/heltec_wifi_kit_32",
+                    "/Users/gbaranski/code/IoT/vape-mod/.pio/libdeps/lolin32/ESP32 AnalogWrite/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -176,7 +182,6 @@
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Preferences/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
@@ -184,7 +189,6 @@
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
-                    "/Users/gbaranski/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "/Users/gbaranski/.platformio/packages/tool-unity",
                     ""
                 ]
