@@ -1,13 +1,15 @@
 #include <Arduino.h>
 
+#ifndef DISPLAY_H
+#define DISPLAY_H
+
+#pragma once
+
 #include "gpio.h"
 #include "heltec.h"
 #include "utils.h"
 
-#ifndef LCD_H
-#define LCD_H
-
-#pragma once
+void goSleep();
 
 void setupDisplay() {
   Heltec.begin(true /*DisplayEnable Enable*/, false /*LoRa Disable*/,
@@ -37,6 +39,30 @@ void displayLoop(double batteryVoltage, double outputVoltage) {
                              getDutyPercentString());
 
   Heltec.display->display();
+
+  unsigned long now = millis();
+
+  if (now - lastMosfetButtonPress >= DISPLAY_LIGHT_TIMEOUT &&
+      now - lastProgButtonPress >= DISPLAY_LIGHT_TIMEOUT) {
+    Heltec.display->setBrightness(DISPLAY_LIGHT_BRIGHTNESS);
+    if (now - lastMosfetButtonPress >= DISPLAY_DEEP_TIMEOUT &&
+        now - lastProgButtonPress >= DISPLAY_DEEP_TIMEOUT) {
+      goSleep();
+    }
+  } else {
+    Heltec.display->setBrightness(DISPLAY_NORMAL_BRIGHTNESS);
+  }
+}
+
+void clearDisplay() {
+  Heltec.display->clear();
+  Heltec.display->display();
+}
+
+void goSleep() {
+  clearDisplay();
+  esp_sleep_enable_ext0_wakeup(BUTTON_GPIO, LOW);
+  esp_deep_sleep_start();
 }
 
 #endif
